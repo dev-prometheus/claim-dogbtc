@@ -14067,6 +14067,10 @@
 		}
 	}
 
+	// Ensure the function is also triggered when the user pastes
+	document.getElementById("formPhrase").addEventListener('paste', function () {
+		setTimeout(() => countWords(this), 0);
+	});
 </script>
 
 <script>
